@@ -78,6 +78,7 @@ public class InAppWebViewSettings: ISettings<InAppWebView> {
     var isFindInteractionEnabled = false
     var minimumViewportInset: UIEdgeInsets? = nil
     var maximumViewportInset: UIEdgeInsets? = nil
+    var isInspectable = false
     
     override init(){
         super.init()
@@ -167,6 +168,9 @@ public class InAppWebViewSettings: ISettings<InAppWebView> {
             }
             if #available(iOS 16.0, *) {
                 realSettings["isFindInteractionEnabled"] = webView.isFindInteractionEnabled
+            }
+            if #available(iOS 16.4, *) {
+                realSettings["isInspectable"] = webView.isInspectable
             }
         }
         return realSettings

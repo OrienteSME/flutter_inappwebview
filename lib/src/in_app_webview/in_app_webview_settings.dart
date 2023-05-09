@@ -1562,6 +1562,21 @@ as it can cause framerate drops on animations in Android 9 and lower (see [Hybri
   ])
   String? iframeCsp;
 
+  /// Sets whether the Webview should be inspectable in Safari.
+  ///
+  /// **NOTE**: only available on iOS 16.4+.
+  ///
+  /// The default value is `true`.
+  @SupportedPlatforms(platforms: [
+    IOSPlatform(
+      available: '16.4',
+      apiName: 'WKWebViewConfiguration.isInspectable',
+      apiUrl:
+          'https://developer.apple.com/documentation/webkit/wkwebview/4111163-isinspectable',
+    ),
+  ])
+  bool? isInspectable;
+
   @ExchangeableObjectConstructor()
   InAppWebViewSettings_({
     this.useShouldOverrideUrlLoading,
@@ -1701,6 +1716,7 @@ as it can cause framerate drops on animations in Android 9 and lower (see [Hybri
     this.iframeReferrerPolicy,
     this.iframeName,
     this.iframeCsp,
+    this.isInspectable = true,
   }) {
     if (this.minimumFontSize == null)
       this.minimumFontSize = Util.isAndroid ? 8 : 0;

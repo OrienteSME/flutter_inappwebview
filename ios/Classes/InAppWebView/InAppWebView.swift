@@ -360,6 +360,12 @@ public class InAppWebView: WKWebView, UIScrollViewDelegate, WKUIDelegate,
 //        }
         
         if let settings = settings {
+            if #available(iOS 16.4, *) {
+                if settings.isInspectable {
+                    self.isInspectable = settings.isInspectable
+                }
+            }
+            
             if settings.transparentBackground {
                 isOpaque = false
                 backgroundColor = UIColor.clear
@@ -605,6 +611,7 @@ public class InAppWebView: WKWebView, UIScrollViewDelegate, WKUIDelegate,
             if #available(iOS 15.0, *) {
                 configuration.upgradeKnownHostsToHTTPS = settings.upgradeKnownHostsToHTTPS
             }
+            
         }
         
         return configuration
