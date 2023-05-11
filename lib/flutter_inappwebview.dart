@@ -19,7 +19,7 @@
  *
 */
 
-library flutter_inappwebview_fix_iostouchdelay;
+library flutter_inappwebview;
 
 export 'src/main.dart';
 export 'src/web/main_stub.dart' if (dart.library.html) 'src/web/main.dart';
